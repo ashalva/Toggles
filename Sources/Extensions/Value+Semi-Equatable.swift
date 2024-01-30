@@ -15,6 +15,8 @@ extension Value {
             if case .string = rhs { return true }
         case .secure:
             if case .secure = rhs { return true }
+        case .object(let json):
+            fatalError("not supported type: \(json)")
         }
         return false
     }

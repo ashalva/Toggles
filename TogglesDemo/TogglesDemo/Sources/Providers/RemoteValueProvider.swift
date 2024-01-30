@@ -36,6 +36,8 @@ public class RemoteValueProvider: ValueProvider {
                 return .secure(Int(arc4random()) % 2  == 0 ?
                                "YXe+Ev76FbdwCeDCVpZNZ1RItWZwKTLXF3/Yi+x62n3JWbvPo6YK" :
                                 "xvuqELiuOMgSB6TvnU9V350uXV81GSd/SXvp8oFP42xyHswSww==")
+            case .object(let json):
+                fatalError("not supported type: \(json)")
             }
         }
         completion()

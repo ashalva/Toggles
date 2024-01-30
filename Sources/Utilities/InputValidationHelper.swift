@@ -21,6 +21,9 @@ struct InputValidationHelper {
             return true
         case .secure:
             return true
+        case .object:
+            guard let jsonData = input.data(using: String.Encoding.utf8) else { return false }
+            return JSONSerialization.isValidJSONObject(jsonData)
         }
     }
     
@@ -36,6 +39,8 @@ struct InputValidationHelper {
             return .string(input)
         case .secure:
             return .secure(input)
+        case .object:
+            return .string(input)
         }
     }
     
@@ -51,6 +56,8 @@ struct InputValidationHelper {
         case .string:
             return .default
         case .secure:
+            return .default
+        case .object:
             return .default
         }
     }

@@ -33,6 +33,10 @@ public class ToggleObservable: ObservableObject {
     @Published
     public var secureValue: String?
     
+    /// The raw value of the toggle if it's of object type, nil otherwise.
+    @Published
+    public var jsonValue: JSON?
+    
     /// The default intializer.
     ///
     /// - Parameters:
@@ -59,6 +63,8 @@ public class ToggleObservable: ObservableObject {
                     self.stringValue = value
                 case .secure(let value):
                     self.secureValue = value
+                case .object(let json):
+                    self.jsonValue = json
                 }
             }
             .store(in: &cancellables)
